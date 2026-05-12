@@ -1,6 +1,5 @@
 <template>
-  <div v-if="article" class="min-h-screen bg-rice-paper">
-    <!-- Hero Section -->
+  <div v-if="article" class="min-h-screen bg-white">
     <div class="relative h-[70vh] min-h-[500px] max-h-[800px] overflow-hidden">
       <img 
         :src="article.cover" 
@@ -8,13 +7,11 @@
         class="w-full h-full object-cover"
       >
       <div class="absolute inset-0 gradient-overlay" />
-      <div class="absolute inset-0 bg-gradient-to-br from-chinese-red/10 via-transparent to-mountain-blue/20" />
+      <div class="absolute inset-0 bg-gradient-to-br from-fresh-green/10 via-transparent to-fresh-green-dark/10" />
       
-      <!-- Hero Content -->
       <div class="absolute inset-0 flex items-end">
         <div class="section-padding pb-12 w-full">
           <div class="max-w-4xl mx-auto">
-            <!-- Breadcrumb -->
             <nav class="flex items-center gap-2 text-white/70 text-sm mb-6">
               <router-link to="/" class="hover:text-white transition-colors">Home</router-link>
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -27,7 +24,6 @@
               <span class="text-white">{{ article.title }}</span>
             </nav>
             
-            <!-- Season Badges -->
             <div class="flex gap-2 mb-4">
               <span 
                 v-for="season in article.seasons" 
@@ -45,7 +41,6 @@
               {{ article.subtitle }}
             </p>
             
-            <!-- Meta Info -->
             <div class="flex flex-wrap items-center gap-6 text-white/80">
               <div class="flex items-center gap-2">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -70,14 +65,13 @@
         </div>
       </div>
       
-      <!-- Share Buttons -->
       <div class="absolute top-24 right-8 hidden lg:flex flex-col gap-3">
-        <button class="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-chinese-red transition-colors">
+        <button class="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-fresh-green transition-colors">
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
             <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
           </svg>
         </button>
-        <button class="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-mountain-blue transition-colors">
+        <button class="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-fresh-green-dark transition-colors">
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
             <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
           </svg>
@@ -90,15 +84,12 @@
       </div>
     </div>
 
-    <!-- Article Content -->
     <article class="section-padding py-12">
       <div class="max-w-4xl mx-auto">
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
-          <!-- Main Content -->
           <div class="lg:col-span-2">
-            <!-- Introduction -->
             <div class="prose prose-lg max-w-none">
-              <p class="text-xl text-gray-600 leading-relaxed font-display italic border-l-4 border-chinese-red pl-6 mb-8">
+              <p class="text-xl text-gray-600 leading-relaxed font-display italic border-l-4 border-fresh-green pl-6 mb-8">
                 {{ article.excerpt }}
               </p>
               
@@ -115,7 +106,6 @@
                   that seems almost otherworldly in its beauty.
                 </p>
 
-                <!-- Inline Image -->
                 <figure class="my-10">
                   <img 
                     :src="article.images[0]" 
@@ -127,13 +117,13 @@
                   </figcaption>
                 </figure>
 
-                <h2 class="font-display text-2xl font-bold text-ink-black mt-12 mb-4">
+                <h2 class="font-display text-2xl font-bold text-gray-900 mt-12 mb-4">
                   Best Time to Visit
                 </h2>
                 <p>
                   The ideal time to visit {{ article.title }} is during 
                   <span v-for="(season, idx) in article.seasons" :key="season">
-                    <span :class="`text-${season === 'spring' ? 'jade-green' : season === 'summer' ? 'mountain-blue' : season === 'autumn' ? 'golden' : 'gray-500'}`">
+                    <span :class="`text-${season === 'spring' ? 'fresh-green' : season === 'summer' ? 'fresh-green-dark' : season === 'autumn' ? 'amber-500' : 'gray-500'}`">
                       {{ seasonLabels[season] }}
                     </span>
                     <span v-if="idx < article.seasons.length - 1"> and </span>
@@ -143,7 +133,7 @@
                   perfect for exploration.
                 </p>
 
-                <h2 class="font-display text-2xl font-bold text-ink-black mt-12 mb-4">
+                <h2 class="font-display text-2xl font-bold text-gray-900 mt-12 mb-4">
                   Getting There
                 </h2>
                 <p>
@@ -153,7 +143,6 @@
                   offering glimpses of rural Chinese life.
                 </p>
 
-                <!-- Second Inline Image -->
                 <figure class="my-10">
                   <img 
                     :src="article.images[1] || article.images[0]" 
@@ -165,7 +154,7 @@
                   </figcaption>
                 </figure>
 
-                <h2 class="font-display text-2xl font-bold text-ink-black mt-12 mb-4">
+                <h2 class="font-display text-2xl font-bold text-gray-900 mt-12 mb-4">
                   What to Expect
                 </h2>
                 <p>
@@ -175,14 +164,14 @@
                   diverse flora and fauna, ancient geological formations, and breathtaking viewpoints.
                 </p>
 
-                <blockquote class="border-l-4 border-mountain-blue pl-6 py-2 my-8 bg-blue-50/50 rounded-r-lg">
+                <blockquote class="border-l-4 border-fresh-green-dark pl-6 py-2 my-8 bg-fresh-green-light/50 rounded-r-lg">
                   <p class="text-lg italic text-gray-700">
                     "{{ article.title }} represents the kind of hidden treasure that makes traveling in China 
                     so rewarding. It's places like this that remind us why we explore."
                   </p>
                 </blockquote>
 
-                <h2 class="font-display text-2xl font-bold text-ink-black mt-12 mb-4">
+                <h2 class="font-display text-2xl font-bold text-gray-900 mt-12 mb-4">
                   Practical Tips
                 </h2>
                 <ul class="space-y-3 list-disc list-inside">
@@ -202,7 +191,6 @@
               </div>
             </div>
 
-            <!-- Tags -->
             <div class="flex flex-wrap gap-2 mt-12 pt-8 border-t border-gray-200">
               <span class="text-gray-500 text-sm">Tags:</span>
               <span 
@@ -223,9 +211,8 @@
               </span>
             </div>
 
-            <!-- Photo Gallery -->
             <div class="mt-16">
-              <h3 class="font-display text-2xl font-bold text-ink-black mb-6">Photo Gallery</h3>
+              <h3 class="font-display text-2xl font-bold text-gray-900 mb-6">Photo Gallery</h3>
               <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
                 <div 
                   v-for="(image, index) in article.images" 
@@ -243,11 +230,9 @@
             </div>
           </div>
 
-          <!-- Sidebar -->
           <aside class="space-y-8">
-            <!-- Location Map -->
             <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-6">
-              <h3 class="font-display text-lg font-bold text-ink-black mb-4">Location</h3>
+              <h3 class="font-display text-lg font-bold text-gray-900 mb-4">Location</h3>
               <div class="aspect-video bg-gray-100 rounded-xl overflow-hidden mb-4">
                 <div class="w-full h-full flex items-center justify-center">
                   <div class="text-center">
@@ -274,15 +259,14 @@
               </div>
             </div>
 
-            <!-- Related Articles -->
             <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-6">
-              <h3 class="font-display text-lg font-bold text-ink-black mb-4">You Might Also Like</h3>
+              <h3 class="font-display text-lg font-bold text-gray-900 mb-4">You Might Also Like</h3>
               <div class="space-y-4">
                 <article 
                   v-for="related in relatedArticles" 
-                  :key="related.slug"
+                  :key="related.id"
                   class="group cursor-pointer"
-                  @click="$router.push(`/article/${related.slug}`)"
+                  @click="$router.push(`/article/${related.id}`)"
                 >
                   <div class="flex gap-4">
                     <div class="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0">
@@ -293,7 +277,7 @@
                       >
                     </div>
                     <div>
-                      <h4 class="font-display font-semibold text-ink-black group-hover:text-chinese-red transition-colors line-clamp-2">
+                      <h4 class="font-display font-semibold text-gray-900 group-hover:text-fresh-green transition-colors line-clamp-2">
                         {{ related.title }}
                       </h4>
                       <p class="text-sm text-gray-500 mt-1">{{ related.province }}</p>
@@ -303,17 +287,16 @@
               </div>
             </div>
 
-            <!-- Save/Share -->
             <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-6">
-              <h3 class="font-display text-lg font-bold text-ink-black mb-4">Save & Share</h3>
+              <h3 class="font-display text-lg font-bold text-gray-900 mb-4">Save & Share</h3>
               <div class="flex gap-3">
-                <button class="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl border border-gray-200 hover:border-chinese-red hover:text-chinese-red transition-colors">
+                <button class="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl border border-gray-200 hover:border-fresh-green hover:text-fresh-green transition-colors">
                   <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
                   </svg>
                   Save
                 </button>
-                <button class="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl border border-gray-200 hover:border-mountain-blue hover:text-mountain-blue transition-colors">
+                <button class="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl border border-gray-200 hover:border-fresh-green-dark hover:text-fresh-green-dark transition-colors">
                   <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/>
                   </svg>
@@ -326,7 +309,6 @@
       </div>
     </article>
 
-    <!-- Lightbox Modal -->
     <div 
       v-if="lightboxOpen" 
       class="fixed inset-0 z-50 bg-black/95 flex items-center justify-center"
@@ -375,11 +357,10 @@
     </div>
   </div>
 
-  <!-- Not Found -->
   <div v-else class="min-h-screen flex items-center justify-center">
     <div class="text-center">
-      <h1 class="font-display text-4xl font-bold text-ink-black mb-4">Article Not Found</h1>
-      <p class="text-gray-600 mb-6">The destination you're looking for doesn't exist.</p>
+      <h1 class="font-display text-4xl font-bold text-gray-900 mb-4">Article Not Found</h1>
+      <p class="text-warm-gray mb-6">The destination you're looking for doesn't exist.</p>
       <router-link to="/explore" class="btn-primary">
         Browse All Destinations
       </router-link>
@@ -388,7 +369,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { articles, seasonColors, seasonLabels } from '../data/articles'
 import type { Article } from '../data/articles'
@@ -400,18 +381,20 @@ const lightboxOpen = ref(false)
 const currentImageIndex = ref(0)
 
 const relatedArticles = computed(() => {
-  if (!article.value) return []
-  
+  if (!article.value) {
+    return []
+  }
+
   return articles
-    .filter(a => 
-      a.slug !== article.value?.slug && 
-      (a.province === article.value?.province || 
-       a.seasons.some(s => article.value?.seasons.includes(s)))
+    .filter((item) =>
+      item.id !== article.value?.id &&
+      (item.province === article.value?.province ||
+        item.seasons.some((season) => article.value?.seasons.includes(season)))
     )
     .slice(0, 3)
 })
 
-const formatDate = (dateString: string) => {
+const formatDate = (dateString: string): string => {
   return new Date(dateString).toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
@@ -419,47 +402,75 @@ const formatDate = (dateString: string) => {
   })
 }
 
-const openLightbox = (index: number) => {
+const updateArticle = (id: string | undefined): void => {
+  article.value = articles.find((item) => item.id === id) ?? null
+
+  if (article.value) {
+    document.title = `${article.value.title} - China Wonderful Day`
+    return
+  }
+
+  document.title = 'Article Not Found - China Wonderful Day'
+}
+
+const openLightbox = (index: number): void => {
   currentImageIndex.value = index
   lightboxOpen.value = true
   document.body.style.overflow = 'hidden'
 }
 
-const closeLightbox = () => {
+const closeLightbox = (): void => {
   lightboxOpen.value = false
   document.body.style.overflow = ''
 }
 
-const nextImage = () => {
+const nextImage = (): void => {
   if (article.value && currentImageIndex.value < article.value.images.length - 1) {
-    currentImageIndex.value++
+    currentImageIndex.value += 1
   }
 }
 
-const prevImage = () => {
+const prevImage = (): void => {
   if (currentImageIndex.value > 0) {
-    currentImageIndex.value--
+    currentImageIndex.value -= 1
   }
 }
 
-// Keyboard navigation for lightbox
-const handleKeydown = (e: KeyboardEvent) => {
-  if (!lightboxOpen.value) return
-  
-  if (e.key === 'Escape') closeLightbox()
-  if (e.key === 'ArrowRight') nextImage()
-  if (e.key === 'ArrowLeft') prevImage()
+const handleKeydown = (event: KeyboardEvent): void => {
+  if (!lightboxOpen.value) {
+    return
+  }
+
+  if (event.key === 'Escape') {
+    closeLightbox()
+  }
+
+  if (event.key === 'ArrowRight') {
+    nextImage()
+  }
+
+  if (event.key === 'ArrowLeft') {
+    prevImage()
+  }
 }
+
+watch(
+  () => route.params.id,
+  (id) => {
+    updateArticle(typeof id === 'string' ? id : undefined)
+    currentImageIndex.value = 0
+    closeLightbox()
+  },
+  { immediate: true }
+)
 
 onMounted(() => {
-  const slug = route.params.slug as string
-  article.value = articles.find(a => a.slug === slug) || null
-  
-  // Update page title
-  if (article.value) {
-    document.title = `${article.value.title} - China Hidden Gems`
-  }
-  
   window.addEventListener('keydown', handleKeydown)
 })
+
+onBeforeUnmount(() => {
+  window.removeEventListener('keydown', handleKeydown)
+  document.body.style.overflow = ''
+})
 </script>
+

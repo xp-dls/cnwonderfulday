@@ -1,4 +1,5 @@
 export interface Article {
+  id: string
   slug: string
   title: string
   subtitle: string
@@ -16,7 +17,9 @@ export interface Article {
   meta_description: string
 }
 
-export const articles: Article[] = [
+interface ArticleSeed extends Omit<Article, 'id'> {}
+
+const articleSeeds: ArticleSeed[] = [
   {
     slug: "zhangye-danxia",
     title: "Zhangye Danxia Landform",
@@ -140,14 +143,39 @@ export const articles: Article[] = [
   }
 ]
 
+const createArticleId = (): string => {
+  return Math.floor(10000000 + Math.random() * 90000000).toString()
+}
+
+const assignArticleIds = (seedArticles: ArticleSeed[]): Article[] => {
+  const usedIds = new Set<string>()
+
+  return seedArticles.map((article) => {
+    let id = createArticleId()
+
+    while (usedIds.has(id)) {
+      id = createArticleId()
+    }
+
+    usedIds.add(id)
+
+    return {
+      id,
+      ...article
+    }
+  })
+}
+
+export const articles: Article[] = assignArticleIds(articleSeeds)
+
 export const provinces = [...new Set(articles.map(a => a.province))]
 export const cities = [...new Set(articles.map(a => a.city))]
 export const seasons = ["spring", "summer", "autumn", "winter"] as const
 
 export const seasonColors: Record<string, string> = {
-  spring: "bg-jade-green",
-  summer: "bg-mountain-blue",
-  autumn: "bg-golden",
+  spring: "bg-fresh-green",
+  summer: "bg-fresh-green-dark",
+  autumn: "bg-amber-500",
   winter: "bg-gray-400"
 }
 

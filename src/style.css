@@ -4,9 +4,9 @@
 
 @layer base {
   body {
-    @apply font-body text-ink-black bg-rice-paper antialiased;
+    @apply font-body text-ink bg-white antialiased;
   }
-  
+
   h1, h2, h3, h4, h5, h6 {
     @apply font-display;
   }
@@ -14,30 +14,30 @@
 
 @layer components {
   .btn-primary {
-    @apply bg-chinese-red text-white px-6 py-3 rounded-lg font-medium 
-           hover:bg-opacity-90 transition-all duration-300 
+    @apply bg-fresh-green text-white px-6 py-3 rounded-xl font-semibold
+           hover:bg-fresh-green-dark transition-all duration-300
            hover:shadow-lg hover:-translate-y-0.5;
   }
-  
+
   .btn-secondary {
-    @apply bg-mountain-blue text-white px-6 py-3 rounded-lg font-medium 
-           hover:bg-opacity-90 transition-all duration-300;
+    @apply bg-white text-fresh-green border-2 border-fresh-green px-6 py-3 rounded-xl font-semibold
+           hover:bg-fresh-green hover:text-white transition-all duration-300;
   }
-  
+
   .card-hover {
     @apply transition-all duration-500 hover:shadow-2xl hover:-translate-y-2;
   }
-  
+
   .section-padding {
     @apply px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16;
   }
-  
+
   .gradient-overlay {
-    @apply bg-gradient-to-t from-black/70 via-black/30 to-transparent;
+    @apply bg-gradient-to-t from-black/60 via-black/25 to-transparent;
   }
-  
+
   .text-shadow {
-    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    text-shadow: 0 2px 8px rgba(0,0,0,0.35);
   }
 }
 
@@ -45,11 +45,11 @@
   .animate-fade-in {
     animation: fadeIn 0.6s ease-out forwards;
   }
-  
+
   .animate-slide-up {
     animation: slideUp 0.6s ease-out forwards;
   }
-  
+
   .animate-scale-in {
     animation: scaleIn 0.5s ease-out forwards;
   }
@@ -61,41 +61,40 @@
 }
 
 @keyframes slideUp {
-  from { 
+  from {
     opacity: 0;
     transform: translateY(30px);
   }
-  to { 
+  to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
 @keyframes scaleIn {
-  from { 
+  from {
     opacity: 0;
     transform: scale(0.95);
   }
-  to { 
+  to {
     opacity: 1;
     transform: scale(1);
   }
 }
 
-/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #F8F4F0;
+  background: #F5F9F5;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1A5276;
+  background: #81C784;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #C41E3A;
+  background: #4CAF50;
 }
